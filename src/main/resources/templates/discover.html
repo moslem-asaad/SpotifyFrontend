@@ -1,0 +1,22 @@
+<div th:fragment="discoverTop(type)" class="popular_song" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div th:if="${type} == 'songs'" class="h4">
+        <h4>Popular Songs</h4>
+
+        <div class="btn_s">
+            <i class="bi bi-arrow-left-short" onclick="scrollList('popSongs','left')"></i>
+            <i class="bi bi-arrow-right-short" onclick="scrollList('popSongs','right')"></i>
+        </div>
+    </div>
+
+    <div th:if="${type} == 'artists'" class="h4">
+        <h4>Popular Artists</h4>
+
+        <div class="btn_s">
+            <i class="bi bi-arrow-left-short" onclick="scrollList('popArtists','left')"></i>
+            <i class="bi bi-arrow-right-short" onclick="scrollList('popArtists','right')"></i>
+        </div>
+    </div>
+
+    <div th:if="${type} == 'songs'" class="pop_song" id="popSongs"></div>
+    <div th:if="${type} == 'artists'" class="pop_song" id="popArtists"></div>
+</div>

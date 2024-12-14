@@ -1,0 +1,14 @@
+<nav th:fragment="navigationBar(currentPage)" xmlns:th="">
+    <ul>
+        <li><a href="/">Discover</a> <span th:if="${currentPage == 'discover'}"></span></li>
+        <li><a href="/library">My Library</a> <span th:if="${currentPage == 'library'}"></span></li>
+        <li><a href="/radio">Radio</a> <span th:if="${currentPage == 'radio'}"></span></li>
+    </ul>
+    <div class="search">
+        <i class="bi bi-search"></i>
+        <input type="text" placeholder="Search Music...">
+    </div>
+    <div class="user">
+        <img src="img/logo.png" title="Spotify (Your Name)">
+    </div>
+</nav>
