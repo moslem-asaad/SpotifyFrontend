@@ -4,6 +4,7 @@ import com.example.frontend.model.Album;
 import com.example.frontend.model.Track;
 import com.example.frontend.service.CatalogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,8 @@ public class SongController {
 
     @Autowired
     private CatalogService catalogService;
-
+    @Value("${frontend.useStaticData}")
+    boolean isNotRandom;
     /**
      * @return random 25 popular songs tracks
      */
@@ -27,7 +29,7 @@ public class SongController {
     public List<Track> discover() {
         List<Track> popularSongs = catalogService.fetchPopularSongs();
 
-        Collections.shuffle(popularSongs);
+        if(!isNotRandom) Collections.shuffle(popularSongs);
         return popularSongs.subList(0, Math.min(25, popularSongs.size()));
     }
 
